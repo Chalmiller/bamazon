@@ -17,6 +17,7 @@ connection.connect(function(err) {
 
 function queryAllItems() {
   connection.query("SELECT * FROM products", function(err, res) {
+    if (err) throw err;
     for (var i = 0; i < res.length; i++) {
       console.log(res[i].item_id + " | " + res[i].product_name + " | " + res[i].department_name + " | " + res[i].price);
     }
@@ -24,6 +25,7 @@ function queryAllItems() {
     runSearch();
   });
 }
+
 function queryIDs() {
   connection.query("SELECT * FROM products", function(err, res) {
     var itemslist;
@@ -50,7 +52,7 @@ function runSearch() {
     .then(function(answer) {
       var query = "SELECT * FROM products";
       connection.query(query, { item_id: answer.idChoice }, function(err, res) {
-        if (answer.itemQuantity > res[i].stock_quantity)
+        if (answer.itemQuantity > res[i].stock_quantity) {
           console.log("Insufficient Quantity!");
         } else {
           var newQuantity = res[i].stock_quantity - answer.itemQuantity;;
@@ -58,12 +60,9 @@ function runSearch() {
           newQuery += "SET itemQuantity = " + newQuantity;
           newQuery += "WHERE item_id = " + answer.idChoice;
           connection.query(newQuery, function(err, res) {
-            if (err) throw err;
             console.log(result.affectedRows + " record(s) updated");
           });
-        })
-      }
-    }
-  });
-}
-
+        }
+      })
+    })
+  };
