@@ -2,7 +2,8 @@
 Inventory App utilizing MySQL and Inquirer
 
 
-The app will create a list of items you can choose from. From here, you may choose the index of the item you would like to purchase.
+The app will create a list of items you can choose from. 
+From here, you may choose the index of the item you would like to purchase.
 ![bamazon_workflow_1](https://user-images.githubusercontent.com/24684433/29302544-e9119bca-8139-11e7-8506-559da53fdde5.png)
 
 ![bamazon_workflow_2](https://user-images.githubusercontent.com/24684433/29302546-edcdebe6-8139-11e7-9f0e-e80061afa602.png)
